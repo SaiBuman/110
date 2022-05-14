@@ -27,24 +27,25 @@ Webcam.set({
 
   function check() {
       img = document.getElementById("snapshot");
-      classifier = classify(img , gotResult);
-  }
+      classifier.classify(img , gotResult);
+      }
 
- function gotResult(error,result) {
+ function gotResult(error,results) {
       if(error) {
           console.error("Error");
+
       }
       else{
-          console.log(result);
-        if (results[0].label == Amazing) {
+          console.log(results);
+        if (results[0].label == "Amazing") {
             document.getElementById("result_emotion_name").innerHTML = "Prediction - <span>&#128076;</span> This is looking amazing "
         }
 
-        if (results[0].label == Best) {
+        if (results[0].label == "Best") {
             document.getElementById("result_emotion_name").innerHTML = "Prediction - <span>&#128077;</span> All the best "
         }
 
-        if (results[0].label == Victory) {
+        if (results[0].label == "Victory") {
             document.getElementById("result_emotion_name").innerHTML = "Prediction - <span>&#9996;</span> That was a marvelous victory "
         }
       }
